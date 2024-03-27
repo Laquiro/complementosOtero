@@ -1,0 +1,8 @@
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let alumno of alumnos">
+      <span [ngClass]="{'presente': alumno.presente, 'ausente': !alumno.presente}" class="fw-bold" [ngStyle]="{'color': alumno.presente ? 'green' : 'gray'}">
+        {{ alumno.apellido }} {{ alumno.nombre }} - Nota: <span [ngClass]="alumno.nota >= 10 ? 'text-success' : 'text-danger'">{{ alumno.nota | notaFormat }}</span>
+      </span>
+    </li>
+  </ul>
+  

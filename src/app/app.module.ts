@@ -7,13 +7,17 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { StudentComponent } from './student/student.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ListaAlumnosComponent } from './lista-alumnos/lista-alumnos.component';
+import { NotaFormatPipe } from './nota-format.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     StudentComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    ListaAlumnosComponent,
+    NotaFormatPipe
   ],
   imports: [
     BrowserModule,
