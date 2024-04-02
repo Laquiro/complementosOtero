@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Formulario de contacto</h5>
+                    <p class="card-text text-center">Escríbenos y en breve los pondremos en contacto contigo</p>
+                    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                            <label for="nombre" class="text-center">Nombre:</label>
+                            <input type="text" id="nombre" formControlName="nombre" placeholder="Escribe tu nombre" class="form-control">
+                            <div *ngIf="formulario.get('nombre')?.invalid && (formulario.get('nombre')?.dirty || formulario.get('nombre')?.touched)" class="text-danger">
+                                <div *ngIf="formulario.get('nombre')?.errors?.['required']">Nombre es requerido</div>
+                                <div *ngIf="formulario.get('nombre')?.errors?.['minlength']">Nombre debe tener al menos 3 caracteres</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="text-center">Email:</label>
+                            <input type="email" id="email" formControlName="email" placeholder="Escribe tu Email" class="form-control">
+                            <div *ngIf="formulario.get('email')?.invalid && (formulario.get('email')?.dirty || formulario.get('email')?.touched)" class="text-danger">
+                                <div *ngIf="formulario.get('email')?.errors?.['required']">Email es requerido</div>
+                                <div *ngIf="formulario.get('email')?.errors?.['email']">Email inválido</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="edad" class="text-center">Edad:</label>
+                            <input type="number" id="edad" formControlName="edad" placeholder="Escribe tu edad (máx. 99)" class="form-control" max="99" (input)="limitarDigitos($event)">
+                            <div *ngIf="formulario.get('edad')?.invalid && (formulario.get('edad')?.dirty || formulario.get('edad')?.touched)" class="text-danger">
+                                <div *ngIf="formulario.get('edad')?.errors?.['required']">Edad es requerida</div>
+                                <div *ngIf="formulario.get('edad')?.errors?.['min']">Edad debe ser mayor a 18</div>
+                            </div>
+                        </div>
+                        <button type="submit" [disabled]="formulario.invalid" class="btn btn-primary btn-block mt-3">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
